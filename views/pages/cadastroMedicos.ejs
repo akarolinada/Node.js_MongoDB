@@ -1,0 +1,50 @@
+<head>
+    <%- include('../partials/head'); %>
+    <title>Nossos Funcionários</title>
+</head>
+
+<body>
+
+    <header>
+        <%- include('../partials/header'); %>
+        <title>Cadastrar Funcionários</title>
+    </header>
+
+    <main>
+        <section class="cadastro container" style="margin:20px">
+            <form action="/med_esp/especialidade/cadastrar" method="post">
+                <div class="cadEspecialidade">
+                    <label for="especialidades">Cadastro de Especialidade</label>
+                    <input type="text" name="especialidades"  >
+                    <input type="text" name="idEsp" >
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </form>
+            <form action="/medicos/cadastrar" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Nome:</label>
+                    <input type="text" class="form-control" name="nome" value="<%=resultado.nome%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Especialidade:</label>
+                    <select name="especialidade" id="">
+                        <% resultado %>
+                        <option>
+                            <%= resultado.especialidade %>                        
+                        </option>
+                    </select>
+                </div>            
+                
+                <input type="hidden" name="idFuncionario" value="<%=resultado._id%>">
+                <button type="reset" class="btn btn-primary">Limpar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </section>
+    </main>
+
+        <%- include('../partials/footer'); %>
+        <script src="/js/script.js"></script>
+
+</body>
+
+</html>
