@@ -22,6 +22,11 @@ exports.cadastrar_especialidade_post = (req, res) => {
         return res.redirect('/med_esp/cadastrar')
     })
 
+}
 
-
+exports.listar_especialidade = (req,res)=>{
+    especialidade_db.find({},(erro,resultado)=>{
+        if(erro)throw erro
+        res.render('views/pages/listaEspecialidade_ADM',{resultado})
+    })
 }
