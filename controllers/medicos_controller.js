@@ -12,3 +12,10 @@ exports.cadastrar_medico_post = (req, res) => {
         res.redirect("/med_esp/cadastrar")
     })
 }
+
+exports.listar_medico = (req,res)=>{
+    medicos_db.find({},(erro,resultado)=>{
+        if(erro)throw erro
+        res.render('views/pages/listaMedicos_ADM',{resultado})
+    })
+}
