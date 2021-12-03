@@ -1,9 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const especialidadeController = require('../controllers/especialidade_controller')
+const medicosController = require('../controllers/medicos_controller')
 
-router.get('/medico/cadastrar',especialidadeController.cadastrar_especialidade_get)
-router.post('/medico/cadastrar',especialidadeController.cadastrar_especialidade_post)
+router.post('/medico/cadastrar', medicosController.cadastrar_medico_post)
 
 module.exports = router

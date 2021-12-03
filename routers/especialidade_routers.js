@@ -3,7 +3,7 @@ const router = express.Router()
 
 const especialidadeController = require('../controllers/especialidade_controller')
 
-router.get('/especialidade/cadastrar',especialidadeController.cadastrar_especialidade_get)
-router.post('/especialidade/cadastrar',especialidadeController.cadastrar_especialidade_post)
+router.get('/cadastrar', especialidadeController.cadastrar_especialidade_get)
+router.post('/especialidade/cadastrar', especialidadeController.cadastrar_especialidade_post)
 
 module.exports = router
