@@ -3,7 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const porta = 3000
 
-mongoose.connect('mongodb+srv://soulcodeg6:14253614@cluster0.4qnzd.mongodb.net/Hospital-BWC7?retryWrites=true&w=majority',{
+mongoose.connect('digite seu banco de dados',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>{
