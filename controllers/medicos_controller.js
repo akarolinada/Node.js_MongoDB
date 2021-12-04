@@ -19,3 +19,10 @@ exports.listar_medico = (req,res)=>{
         res.render('views/pages/listaMedicos_ADM',{resultado})
     })
 }
+
+exports.listar_medicoUser = (req,res)=>{
+    medicos_db.find({},(erro,resultado)=>{
+        if(erro)throw erro
+        res.render('views/pages/listaMedicos_USER',{resultado})
+    })
+}
