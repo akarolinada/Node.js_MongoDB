@@ -8,4 +8,7 @@ router.post('/especialidade/cadastrar', especialidadeController.cadastrar_especi
 
 router.get('/listaEsp',especialidadeController.listar_especialidade)
 
+router.get('/deletar/:id', especialidadeController.deletar_especialidade)
+
+
 module.exports = router
