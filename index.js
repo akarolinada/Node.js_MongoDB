@@ -20,9 +20,14 @@ app.use(express.static(__dirname +'/public'))
 const especialidade_routers = require('./routers/especialidade_routers')
 const medico_routers = require('./routers/medico_routers')
 const login_routers = require('./routers/login_routers')
+const logout_routers = require('./routers/logout_routers')
+
+
 app.use('/med_esp', especialidade_routers, medico_routers)
 app.use('/usuario', medico_routers)
 app.use('/login', login_routers)
+app.use('/logout', logout_routers)
+
 
 
 app.listen(porta, () => {
