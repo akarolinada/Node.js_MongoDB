@@ -2,21 +2,21 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const porta = 3000
-
+//Conexão com o MongoDb
 mongoose.connect('mongodb+srv://soulcodeg6:14253614@cluster0.4qnzd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
     console.log('Estamos conectadas ao Banco de Dados')
 })
-
+//Definindo os motores de renderização
 app.set('view engine', 'ejs')
 app.set('views', __dirname, '/views')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(__dirname +'/public'))
 
-
+//Definição das rotas configuradas no routers
 const especialidade_routers = require('./routers/especialidade_routers')
 const medico_routers = require('./routers/medico_routers')
 const login_routers = require('./routers/login_routers')
@@ -29,7 +29,7 @@ app.use('/login', login_routers)
 app.use('/logout', logout_routers)
 
 
-
+//Verifica se a porta está sendo ouvida;
 app.listen(porta, () => {
     console.log('Servidor Conectado')
 })
