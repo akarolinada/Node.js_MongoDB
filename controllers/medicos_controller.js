@@ -48,7 +48,7 @@ exports.listar_medico = (req, res) => {
   }
 };
 
-// Listar médico USER get
+/// Listar médico USER get
 exports.listar_medicoUser = (req, res) => {
   if (localstorage.getItem("usuario") != null) {
     medicos_db.find({}, (erro, resultado) => {
