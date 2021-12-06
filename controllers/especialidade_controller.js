@@ -1,7 +1,11 @@
+// Módulo especialidade database
 const especialidade_db = require("../models/especialidade_model");
+// Módulo localstorage
 const LocalStorage = require("node-localstorage").LocalStorage;
+// Nova instância da pasta localstorage .scratch
 const localstorage = new LocalStorage("./scratch");
 
+// Cadastrar especialidade e médicos Get
 exports.cadastrar_especialidade_get = (req, res) => {
   const resposta2 = { especialidade_select: "Selecione a especialidade" };
   if (localstorage.getItem("admin") != null) {
@@ -20,9 +24,9 @@ exports.cadastrar_especialidade_get = (req, res) => {
   }
 };
 
+// Cadastrar especialidade Post
 exports.cadastrar_especialidade_post = (req, res) => {
   if (req.body.idEsp == "") {
-    console.log("teste", req.body.especialidades);
 
     const salva_especialidade = new especialidade_db();
 
@@ -44,6 +48,7 @@ exports.cadastrar_especialidade_post = (req, res) => {
   }
 };
 
+// Listar especialidade Get
 exports.listar_especialidade = (req, res) => {
   if (localstorage.getItem("admin") != null) {
     especialidade_db.find({}, (erro, resultado) => {
@@ -55,6 +60,7 @@ exports.listar_especialidade = (req, res) => {
   }
 };
 
+// Deletar especialidade
 exports.deletar_especialidade = (req, res) => {
   const id = req.params.id;
   especialidade_db.deleteOne({ _id: id }, (erro, resultado) => {
@@ -63,6 +69,7 @@ exports.deletar_especialidade = (req, res) => {
   });
 };
 
+// Editar especialidade
 exports.editar_especialidade = (req, res) => {
   const resposta2 = { especialidade_select: "Selecione a especialidade" };
   especialidade_db.find({}, (erro, resultado) => {
@@ -73,7 +80,6 @@ exports.editar_especialidade = (req, res) => {
         resposta,
         resposta2,
       });
-      console.log(resposta);
     });
   });
 };
