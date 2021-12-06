@@ -17,9 +17,9 @@
         <h1 class='text-center mt-5 mb-5'>Lista de Médicos</h1>
         <section class="conteudo container">
             <div>
-                <span class="col-12 text-start">Pesquise pelo nome do Médico</span>
+                <!-- <span class="col-12 text-start">Pesquise pelo nome do Médico</span>
                 <input class="my-2" type="text" id="myInput" onkeyup="pesquisarFunc()"
-                    placeholder="Nome do Médicos">
+                    placeholder="Nome do Médicos"> -->
             </div>
             <table id="tabela" class="table table-hover">
                 <thead>
@@ -36,10 +36,10 @@
                             <td>
                                 <%=e.especialidade_select %>
                             </td>
-                            <td class="d-flex justify-content-end "><a href="/medicos/editar/<%=e._id %>"><button
+                            <td class="d-flex justify-content-end "><a href="/med_esp/editarMed/<%=e._id %>"><button
                                         class='btn btn-primary  mx-2'>Editar</button></a>
 
-                                <a href="/medicos/deletar/<%=e._id %>"><button
+                                <a href="/med_esp/deletarMed/<%=e._id %>"><button
                                         class='btn btn-danger'>Excluir</button></a>
                             </td>
                         </tr>
