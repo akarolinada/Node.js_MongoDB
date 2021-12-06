@@ -21,7 +21,6 @@ exports.cadastrar_especialidade_get = (req, res) => {
         acao,
         acao2
       });
-      console.log(resultado);
     });
   } else {
     res.redirect("/login");
