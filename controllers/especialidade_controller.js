@@ -1,53 +1,66 @@
-//requisição da rota especialidade
+// Módulo especialidade database
 const especialidade_db = require("../models/especialidade_model");
-//seleção do campo especialidade
-const resposta2 = {especialidade_select: 'Selecione a especialidade'}
-//exporta o que foi selecionado do campo cadastrar especialidade e
-//renderiza para rota cadastro medicos
+// Módulo localstorage
+const LocalStorage = require("node-localstorage").LocalStorage;
+// Nova instância da pasta localstorage .scratch
+const localstorage = new LocalStorage("./scratch");
+
+// Cadastrar especialidade e médicos Get
 exports.cadastrar_especialidade_get = (req, res) => {
+  const resposta2 = { especialidade_select: "Selecione a especialidade" };
+  if (localstorage.getItem("admin") != null) {
     especialidade_db.find({}, (erro, resultado) => {
-      const resposta = []
-    if (erro) throw erro;
-    res.render("views/pages/cadastroMedicos", { resultado, resposta, resposta2 });
-    console.log(resultado);
-  });
+      const resposta = [];
+      if (erro) throw erro;
+      res.render("views/pages/cadastroMedicos", {
+        resultado,
+        resposta,
+        resposta2,
+      });
+      console.log(resultado);
+    });
+  } else {
+    res.redirect("/login");
+  }
 };
-//aqu faz o post do cadastrar especialidades e envia para o banco de dados 
-//os valores de especialidades 
+
+// Cadastrar especialidade Post
 exports.cadastrar_especialidade_post = (req, res) => {
-  if(req.body.idEsp == ""){
-    console.log("teste", req.body.especialidades);  
-  
+  if (req.body.idEsp == "") {
+
     const salva_especialidade = new especialidade_db();
 
     salva_especialidade.especialidade = req.body.especialidades;
-    //salva os dados e redireciona para rota cadastrar
+
     salva_especialidade.save((erro) => {
       if (erro) throw erro;
       return res.redirect("/med_esp/cadastrar");
     });
-  }else{
+  } else {
     especialidade_db.findById(req.body.idEsp, (erro, resposta) => {
-      
-      if(erro) throw erro
-      resposta.especialidade = req.body.especialidades
+      if (erro) throw erro;
+      resposta.especialidade = req.body.especialidades;
       resposta.save((erro) => {
-        if(erro) throw erro
-        res.redirect('/med_esp/cadastrar')
-      })
-
-    })
+        if (erro) throw erro;
+        res.redirect("/med_esp/cadastrar");
+      });
+    });
   }
-  
-  }
-//usuario ADM lista as especialidades 
-exports.listar_especialidade = (req, res) => {
-  especialidade_db.find({}, (erro, resultado) => {
-    if (erro) throw erro;
-    res.render("views/pages/listaEspecialidade_ADM", { resultado });
-  });
 };
-//usuario ADM tem a opção de deletar 
+
+// Listar especialidade Get
+exports.listar_especialidade = (req, res) => {
+  if (localstorage.getItem("admin") != null) {
+    especialidade_db.find({}, (erro, resultado) => {
+      if (erro) throw erro;
+      res.render("views/pages/listaEspecialidade_ADM", { resultado });
+    });
+  }else{
+    res.redirect('/login')
+  }
+};
+
+// Deletar especialidade
 exports.deletar_especialidade = (req, res) => {
   const id = req.params.id;
   especialidade_db.deleteOne({ _id: id }, (erro, resultado) => {
@@ -55,16 +68,18 @@ exports.deletar_especialidade = (req, res) => {
     res.redirect("/med_esp/listaEsp");
   });
 };
-//usuario ADM edita as especialidades 
+
+// Editar especialidade
 exports.editar_especialidade = (req, res) => {
-  const resposta2 = {especialidade_select: 'Selecione a especialidade'}
+  const resposta2 = { especialidade_select: "Selecione a especialidade" };
   especialidade_db.find({}, (erro, resultado) => {
-  if (erro) throw erro;
-  especialidade_db.findById(req.params.id, (erro, resposta) => {
-    res.render("views/pages/cadastroMedicos", { resultado, resposta, resposta2});
-    console.log(resposta);
-  })
-  
-  
-});
-}
+    if (erro) throw erro;
+    especialidade_db.findById(req.params.id, (erro, resposta) => {
+      res.render("views/pages/cadastroMedicos", {
+        resultado,
+        resposta,
+        resposta2,
+      });
+    });
+  });
+};
