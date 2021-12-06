@@ -1,7 +1,6 @@
 {
   "name": "projeto_g6_node",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +13,14 @@
     "localstorage": "^1.0.1",
     "mongoose": "^6.0.14",
     "node-localstorage": "^2.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akarolinada/Projeto_g6_Node.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akarolinada/Projeto_g6_Node.js/issues"
+  },
+  "homepage": "https://github.com/akarolinada/Projeto_g6_Node.js#readme",
+  "description": ""
 }
