@@ -1,9 +1,11 @@
-//requisição da página login 
+// Módulo Login database
 const login_db = require('../models/login_model')
-//requisição da pagina fica armazenado no local storage 
+// Módulo localstorage
 const LocalStorage = require('node-localstorage').LocalStorage
+// Nova instância da pasta localstorage .scratch
 const localstorage = new LocalStorage('./scratch')
-//exporta e verifica qual o usuário se é login do ADM ou usuário comum
+
+// Login get
 exports.login_get = (req, res) => {
     if(localstorage.getItem('usuario') != null){
         res.redirect('/usuario/listaMedico')
@@ -11,15 +13,14 @@ exports.login_get = (req, res) => {
         res.redirect('/med_esp/cadastrar')
     }else{
         res.render('views/pages/login')
-    }    
-
+    }
 }
-//faz o post dos inputs de usuario e senha
+
+// Login post
 exports.login_post = (req, res) => {
     const usuario = req.body.usuario
     const senha = req.body.senha
     
-    //verificação de usuario e senha 
     login_db.Login.findOne({usuario: usuario}, (erro, resultado) => {
         if(erro) throw erro
         console.log(resultado)

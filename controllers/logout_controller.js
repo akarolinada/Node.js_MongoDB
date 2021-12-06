@@ -1,6 +1,9 @@
+// Módulo localstorage
 const LocalStorage = require('node-localstorage').LocalStorage
+// Nova instância da pasta localstorage .scratch
 const localstorage = new LocalStorage('./scratch')
-//exporta os logout remove o usuário comum e ADM
+
+// Logout
 exports.logout = (req,res)=>{
     localstorage.removeItem('usuario')
     localstorage.removeItem('admin')
