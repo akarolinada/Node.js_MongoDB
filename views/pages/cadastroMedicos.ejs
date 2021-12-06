@@ -14,8 +14,8 @@
                 <div class='col-lg-6 col-md-6 col-sm-12'>
                     <form class='form-group' action="/med_esp/especialidade/cadastrar" method="post">
 
-                        <input type="text" class='form-control' name="especialidades"  placeholder="Digite aqui a especialidade">
-                        <input type="text" name="idEsp">
+                        <input type="text" class='form-control' name="especialidades"  placeholder="Digite aqui a especialidade" value='<%= resposta.especialidade %>'>
+                        <input type="hidden" name="idEsp" value='<%= resposta._id %>'>
                         <div class='mt-4'>
                             <button type="submit" class='btn btn-primary'>Cadastrar</button>
                             <button type="reset" class="btn btn-primary">Limpar</button>
@@ -25,16 +25,16 @@
                     </form>
                     <h2 class='text-center mt-5'> Cadastro de Médicos</h2>
                     <form action="/med_esp/medico/cadastrar" class='form-group mt-4' method="post">
-                        <input type="text" class="form-control" name="nome" value="<%=resultado.nome%>" placeholder="Digite o nome do médico">
+                        <input type="text" class="form-control" name="nome" value="<%= resposta2.nome %>" placeholder="Digite o nome do médico">
                         <select class='form-select mt-4' name="especialidade_select">
-                            <option>Selecione a especialidade do médico</option>
+                            <option><%= resposta2.especialidade_select %></option>
                             <% resultado.forEach(e => { %>
                                 <option>
                                     <%= e.especialidade %>
                                 </option>
                                 <% }); %>
                         </select>
-                        <input type="hidden" name="idMed" value="<%=resultado._id%>">
+                        <input type="hidden" name="idMed" value="<%= resposta2._id %>">
                         <div class='mt-4'>
                             <button type="submit" class="btn btn-primary mb-5">Salvar</button>
                             <button type="reset" class="btn btn-primary mb-5">Limpar</button>
