@@ -15,11 +15,11 @@ router.post('/especialidade/cadastrar', especialidadeController.cadastrar_especi
 // Get
 router.get('/listaEsp',especialidadeController.listar_especialidade)
 
-
 // Exportando o router para modulo
 
 router.get('/deletar/:id', especialidadeController.deletar_especialidade)
-
+//Get
 router.get('/editar/:id', especialidadeController.editar_especialidade)
 
+// Exportando o router para modulo
 module.exports = router
