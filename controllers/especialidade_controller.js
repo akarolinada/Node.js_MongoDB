@@ -8,6 +8,8 @@ const localstorage = new LocalStorage("./scratch");
 // Cadastrar especialidade e médicos Get
 exports.cadastrar_especialidade_get = (req, res) => {
   const resposta2 = { especialidade_select: "Selecione a especialidade" };
+  const acao = 'Cadastrar'
+  const acao2 = 'Cadastrar'
   if (localstorage.getItem("admin") != null) {
     especialidade_db.find({}, (erro, resultado) => {
       const resposta = [];
@@ -16,6 +18,8 @@ exports.cadastrar_especialidade_get = (req, res) => {
         resultado,
         resposta,
         resposta2,
+        acao,
+        acao2
       });
       console.log(resultado);
     });
@@ -72,6 +76,8 @@ exports.deletar_especialidade = (req, res) => {
 // Editar especialidade
 exports.editar_especialidade = (req, res) => {
   const resposta2 = { especialidade_select: "Selecione a especialidade" };
+  const acao2 = 'Atualizar'
+  const acao = 'Cadastrar'
   especialidade_db.find({}, (erro, resultado) => {
     if (erro) throw erro;
     especialidade_db.findById(req.params.id, (erro, resposta) => {
@@ -79,6 +85,8 @@ exports.editar_especialidade = (req, res) => {
         resultado,
         resposta,
         resposta2,
+        acao,
+        acao2
       });
     });
   });

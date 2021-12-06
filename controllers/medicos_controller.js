@@ -72,6 +72,8 @@ exports.deletar_medico = (req, res) => {
 // Editar médico
 exports.editar_medico = (req, res) => {
   const resposta = [];
+  const acao = 'Atualizar'
+  const acao2 = 'Cadastrar'
   especialidade_db.find({}, (erro, resultado) => {
     if (erro) throw erro;
     medicos_db.findById(req.params.id, (erro, resposta2) => {
@@ -79,6 +81,8 @@ exports.editar_medico = (req, res) => {
         resultado,
         resposta2,
         resposta,
+        acao,
+        acao2
       });
     });
   });

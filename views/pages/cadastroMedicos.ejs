@@ -22,7 +22,7 @@
                         <input type="hidden" name="idEsp" value='<%= resposta._id %>'>
                         <div class='mt-4'>
                             <!-- botões: cadastrar e limpar -->
-                            <button type="submit" class='btn btn-primary'>Cadastrar</button>
+                            <button type="submit" class='btn btn-primary'><%= acao2 %></button>
                             <button type="reset" class="btn btn-primary">Limpar</button>
                         </div>
 
@@ -33,7 +33,7 @@
                         <input type="text" class="form-control" name="nome" value="<%= resposta2.nome %>" placeholder="Digite o nome do médico">
                         <select class='form-select mt-4' name="especialidade_select">
                             <!-- imprime seleção do banco de dados com as especialidades salvas -->
-                            <option><%= resposta2.especialidade_select %></option>
+                            <option>Selecione a especialidade</option>
                             <% resultado.forEach(e => { %>
                                 <option>
                                     <%= e.especialidade %>
@@ -44,7 +44,7 @@
                         <input type="hidden" name="idMed" value="<%= resposta2._id %>">
                         <div class='mt-4'>
                             <!-- botões: salvar e limpar -->
-                            <button type="submit" class="btn btn-primary mb-5">Salvar</button>
+                            <button type="submit" class="btn btn-primary mb-5"><%= acao %></button>
                             <button type="reset" class="btn btn-primary mb-5">Limpar</button>
 
                         </div>
