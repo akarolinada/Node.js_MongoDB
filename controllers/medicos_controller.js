@@ -1,8 +1,13 @@
+// Módulo Médico database
 const medicos_db = require("../models/medicos_model");
+// Módulo especialidade database
 const especialidade_db = require("../models/especialidade_model");
+// Módulo localstorage
 const LocalStorage = require("node-localstorage").LocalStorage;
+// Nova instância da pasta localstorage .scratch
 const localstorage = new LocalStorage("./scratch");
 
+// Cadastrar médico post
 exports.cadastrar_medico_post = (req, res) => {
   if (req.body.idMed == "") {
     if (localstorage.getItem("admin") != null) {
@@ -31,6 +36,7 @@ exports.cadastrar_medico_post = (req, res) => {
   }
 };
 
+// Listar médico ADM get
 exports.listar_medico = (req, res) => {
   if (localstorage.getItem("admin") != null) {
     medicos_db.find({}, (erro, resultado) => {
@@ -42,6 +48,7 @@ exports.listar_medico = (req, res) => {
   }
 };
 
+// Listar médico USER get
 exports.listar_medicoUser = (req, res) => {
   if (localstorage.getItem("usuario") != null) {
     medicos_db.find({}, (erro, resultado) => {
@@ -53,6 +60,7 @@ exports.listar_medicoUser = (req, res) => {
   }
 };
 
+// Deletar médico
 exports.deletar_medico = (req, res) => {
   const id = req.params.id;
   medicos_db.deleteOne({ _id: id }, (erro, resultado) => {
@@ -61,6 +69,7 @@ exports.deletar_medico = (req, res) => {
   });
 };
 
+// Editar médico
 exports.editar_medico = (req, res) => {
   const resposta = [];
   especialidade_db.find({}, (erro, resultado) => {
@@ -71,7 +80,6 @@ exports.editar_medico = (req, res) => {
         resposta2,
         resposta,
       });
-      console.log(resposta);
     });
   });
 };

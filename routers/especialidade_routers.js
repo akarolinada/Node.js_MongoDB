@@ -14,11 +14,9 @@ router.get('/cadastrar', especialidadeController.cadastrar_especialidade_get)
 router.post('/especialidade/cadastrar', especialidadeController.cadastrar_especialidade_post)
 // Get
 router.get('/listaEsp',especialidadeController.listar_especialidade)
-
-// Exportando o router para modulo
-
+// Get
 router.get('/deletar/:id', especialidadeController.deletar_especialidade)
-//Get
+// Get
 router.get('/editar/:id', especialidadeController.editar_especialidade)
 
 // Exportando o router para modulo

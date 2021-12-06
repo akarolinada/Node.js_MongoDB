@@ -18,8 +18,10 @@ router.get('/listaMed', medicosController.listar_medico)
 // Get
 router.get('/listaMedico', medicosController.listar_medicoUser)
 
+// ADM
+// Get
 router.get('/deletarMed/:id', medicosController.deletar_medico)
-
+// Get
 router.get('/editarMed/:id', medicosController.editar_medico)
 
 // Exportando o router para modulo
