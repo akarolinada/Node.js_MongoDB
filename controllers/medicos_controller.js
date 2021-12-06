@@ -60,7 +60,7 @@ exports.listar_medicoUser = (req, res) => {
   }
 };
 
-// Deletar médico
+/// Deletar médico
 exports.deletar_medico = (req, res) => {
   const id = req.params.id;
   medicos_db.deleteOne({ _id: id }, (erro, resultado) => {
