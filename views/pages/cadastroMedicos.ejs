@@ -18,7 +18,7 @@
                 <div class='col-lg-6 col-md-6 col-sm-12'>
                     <form class='form-group' action="/med_esp/especialidade/cadastrar" method="post">
                         <!-- carrega especilidade salva, para o banco de dados -->
-                        <input type="text" class='form-control' name="especialidades" placeholder="Digite aqui a especialidade" value='<%= resposta.especialidade %>'>
+                        <input type="text" class='form-control' name="especialidades" placeholder="Digite aqui a especialidade" value='<%= resposta.especialidade %>' required>
                         <input type="hidden" name="idEsp" value='<%= resposta._id %>'>
                         <div class='mt-4'>
                             <!-- botões: cadastrar e limpar -->
@@ -30,7 +30,7 @@
                     </form>
                     <h2 class='text-center mt-5'> Cadastro de Médicos</h2>
                     <form action="/med_esp/medico/cadastrar" class='form-group mt-4' method="post">
-                        <input type="text" class="form-control" name="nome" value="<%= resposta2.nome %>" placeholder="Digite o nome do médico">
+                        <input type="text" class="form-control" name="nome" value="<%= resposta2.nome %>" placeholder="Digite o nome do médico" required>
                         <select class='form-select mt-4' name="especialidade_select">
                             <!-- imprime seleção do banco de dados com as especialidades salvas -->
                             <option>Selecione a especialidade</option>
